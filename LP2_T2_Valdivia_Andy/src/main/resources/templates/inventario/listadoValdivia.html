@@ -20,7 +20,7 @@
 
     <div class="row mb-4">
         <div class="col-md-3">
-            <a th:href="@{/crear}" class="btn btn-success btn-lg w-100 shadow-sm">
+            <a th:href="@{/inventario/crear}" class="btn btn-success btn-lg w-100 shadow-sm">
                 <i class="fas fa-plus-circle me-2"></i> Nuevo Inventario
             </a>
         </div>
@@ -51,17 +51,14 @@
                             <td th:text="${i.producto.categoria.descripcion}" class="text-center"></td>
                             <td th:text="${i.producto.nombre}" class="text-start"></td>
                             <td class="text-end"
-                                th:text="${#numbers.formatDecimal(i.producto.stockMaximo - i.producto.stockActual, 1, 'NONE', 0, 'POINT')}"></td>
+                                th:text="${i.producto.stockMaximo - i.producto.stockActual}"></td>
                             <td th:text="|S/. ${#numbers.formatDecimal(i.costoIngreso, 1, 'COMMA', 2, 'POINT')}|" class="text-end"></td>
                             <td th:text="${i.cantidad}" class="text-end"></td>
                             <td th:text="${i.lote}" class="text-center"></td>
                             <td
-                                th:text="${i.codEstado == 'A' ? 'Activo' :
-                                            (i.codEstado == 'V' ? 'Vencido' :
-                                            (i.codEstado == 'T' ? 'En Tránsito' :
-                                            (i.codEstado == 'B' ? 'Bloqueado' : 'Desconocido')))}" class="text-center"></td>
+                                th:text="${i.nomEstado}" class="text-center"></td>
                             <td class="text-center">
-                                <a th:href="@{/editar/{id}(id = ${i.numero})}"
+                                <a th:href="@{/inventario/editar/{id}(id = ${i.numero})}"
                                     class="btn btn-outline-primary btn-sm" title="Editar"
                                     aria-label="Editar inventario" role="button">
                                     <i class="fas fa-edit"></i>

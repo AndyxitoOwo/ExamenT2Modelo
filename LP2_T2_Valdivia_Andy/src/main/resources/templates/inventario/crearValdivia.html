@@ -17,19 +17,15 @@
 	<div class="container my-4">
 		<div class="card shadow rounded-3">
 			<div class="card-body p-4">
-				<h2 class="text-center mb-4 text-primary fw-bold">Actualizar
-					Inventario</h2>
+				<h2 class="text-center mb-4 text-primary fw-bold">Registrar
+					Nuevo Inventario</h2>
 				<hr class="mb-4">
 				<div class="row justify-content-center">
 					<div class="col-md-9 col-lg-7">
-						<form th:action="@{/actualizar}" method="post"
+						<form th:action="@{/inventario/registrar}" method="post"
 							th:object="${inventario}">
-							<div class="mb-3">
-								<label for="numero" class="form-label fw-semibold">Número
-									de Inventario</label> <input th:field="*{numero}" type="text"
-									class="form-control form-control-md bg-light" id="numero"
-									readonly="readonly">
-							</div>
+							<input value="0" th:field="*{numero}" type="hidden">
+
 							<div class="mb-3">
 								<label for="fechaVencimiento" class="form-label fw-semibold">Fecha
 									de Vencimiento</label> <input type="date"
@@ -43,7 +39,7 @@
 									<label for="costoIngreso" class="form-label fw-semibold">Costo
 										de Ingreso</label>
 									<div class="input-group input-group-md">
-										<span class="input-group-text">S/.</span> <input type="number"
+										<span class="input-group-text">S/. </span> <input type="number"
 											class="form-control" th:field="*{costoIngreso}"
 											id="costoIngreso" placeholder="0.00" min="1.0" step="0.01"
 											required>
@@ -89,9 +85,9 @@
 									<i class="fas fa-eraser me-2"></i> Limpiar
 								</button>
 								<button type="submit" class="btn btn-primary btn-md">
-									<i class="fas fa-save me-2"></i> Guardar
+									<i class="fas fa-plus-circle me-2"></i> Registrar
 								</button>
-								<a th:href="@{/listadoValdivia}" class="btn btn-dark btn-md">
+								<a th:href="@{/inventario/listadoValdivia}" class="btn btn-dark btn-md">
 									<i class="fas fa-arrow-circle-left me-2"></i> Regresar
 								</a>
 							</div>

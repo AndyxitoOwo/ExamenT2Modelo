@@ -29,8 +29,7 @@ public class Inventario {
 	@Column(name = "numero")
 	private int numero;
 	
-	@Column(name = "fecha_vencimiento")
-	/*Agregado para que pueda recibir la fecha*/
+	@Column(name = "fecha_vencimiento", nullable = false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaVencimiento;
 	
@@ -38,15 +37,30 @@ public class Inventario {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Producto producto;
 	
-	@Column(name = "costo_ingreso")
-	private double costoIngreso;
+	@Column(name = "costo_ingreso", nullable = false)
+	private Double costoIngreso;
 	
 	@Column(name = "cantidad")
-	private int cantidad;
+	private Integer cantidad;
 	
 	@Column(name = "lote")
 	private String lote;
 	
-	@Column(name = "cod_estado")
+	@Column(name = "cod_estado", nullable = false)
 	private String codEstado;
+	
+	public String getNomEstado() {
+		switch (codEstado) {
+		case "A":
+			return "Activo";
+		case "V":
+			return "Vencido";
+		case "T":
+			return "En tránsito";
+		case "B":
+			return "Bloqueado";
+		default:
+			return "Desconocido";
+		}
+	}
 }
